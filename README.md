@@ -33,7 +33,7 @@ http://localhost:3000/
 ## Configure the application
 + Visit the link `https://rapidapi.com/apininjas/api/cars-by-api-ninjas`
 + Create an account
-+ After creating, copy the `X-RapidAPI-Key`
++ After creating, copy the `X-RapidAPI-Key` and `X-RapidAPI-Host`
 + Create a `.env` file in `src` directory and paste the following code in `.env` file.
 `NEXT_PUBLIC_X_Rapid_API_KEY = API_KEY` and
 `NEXT_PUBLIC_X_Rapid_API_HOST = API_URL`
