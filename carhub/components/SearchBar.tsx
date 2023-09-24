@@ -1,10 +1,9 @@
 "use client";
 
-import React, { HtmlHTMLAttributes } from "react";
+import React from "react";
 import { SearchManufacturer } from ".";
 import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { SearchBarProps } from "@/types";
 
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => {
@@ -29,7 +28,7 @@ const SearchBar = ({ setManufacturer, setModel }: SearchBarProps) => {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (searchManufacturer === "" && searchModel === "") {
+    if (searchManufacturer.trim() === "" && searchModel.trim() === "") {
       return alert("Please fill the search bar");
     }
 

@@ -2,23 +2,33 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+
 import { CarProps } from "@/types";
-import { fetchCars } from "@/utils";
-import { CustomButton } from ".";
-import { CarDetails } from ".";
+import { CustomButton, CarDetails } from ".";
 import { calculateCarRent } from "@/utils";
-import { generateCarImageUrl } from "@/utils";
 
 interface CarCardProps {
   car: CarProps;
 }
 
 const CarCard = ({ car }: CarCardProps) => {
+  const [isLiked, setIsLiked] = useState(false);
+
   const { city_mpg, year, make, model, transmission, drive } = car;
 
   const [isOpen, setIsOpen] = useState(false);
 
   const carRent = calculateCarRent(city_mpg, year);
+
+  const imaginAPIKey = process.env.NEXT_PUBLIC_Imagin_API_KEY;
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   return (
     <div className="car-card group">
@@ -26,6 +36,14 @@ const CarCard = ({ car }: CarCardProps) => {
         <h2 className="car-card__content-title">
           {make} {model}
         </h2>
+        <Image
+          src={!isLiked ? "/heart-outline.svg" : "/heart-filled.svg"}
+          width={24}
+          height={24}
+          alt="heart"
+          className="object-contain cursor-pointer mt-0.5"
+          onClick={() => setIsLiked(!isLiked)}
+        />
       </div>
       <p className="flex mt-6 text-[32px] font-extrabold">
         <span className="self-start text-[14px] font-semibold">₹</span>
@@ -34,7 +52,9 @@ const CarCard = ({ car }: CarCardProps) => {
       </p>
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src={generateCarImageUrl(car)}
+          src={`https://cdn.imagin.studio/getimage?customer=${imaginAPIKey}&make=${make}&modelFamily=${
+            model.split(" ")[0]
+          }&zoomType=fullscreen&modelYear=${year}`}
           className="object-contain"
           fill
           priority
@@ -78,11 +98,7 @@ const CarCard = ({ car }: CarCardProps) => {
           />
         </div>
       </div>
-      <CarDetails
-        isOpen={isOpen}
-        closeModal={() => setIsOpen(false)}
-        car={car}
-      />
+      <CarDetails isOpen={isOpen} closeModal={closeModal} car={car} />
     </div>
   );
 };

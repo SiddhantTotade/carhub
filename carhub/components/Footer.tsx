@@ -17,7 +17,7 @@ const Footer = () => {
             className="object-contain"
           />
           <p className="text-base text-gray-700">
-            CarNival <br /> All Rights Reserved &copy;
+            CarHub <br /> All Rights Reserved &copy;
           </p>
         </div>
         <div className="footer__links">

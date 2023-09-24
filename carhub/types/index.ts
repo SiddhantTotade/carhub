@@ -1,4 +1,3 @@
-import { CarCard } from "@/components";
 import { MouseEventHandler } from "react";
 
 export interface CustomButtonProps {
