@@ -39,7 +39,7 @@ http://localhost:3000/
 `NEXT_PUBLIC_X_Rapid_API_HOST = API_URL`
 
 ## Note
-+ You are currently at branch `client-side`. To view the `server-side` change the branch.
++ You are currently at branch `server-side`. To view the `client-side` change the branch.
 
 ## Project Images
 <div align="center" gap="10px" display="flex">
