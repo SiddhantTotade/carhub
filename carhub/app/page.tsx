@@ -1,52 +1,19 @@
-"use client";
-
-import { Hero } from "@/components";
 import Image from "next/image";
-import { SearchBar } from "@/components";
-import { CustomFilter } from "@/components";
 import { fetchCars } from "@/utils";
-import { CarCard } from "@/components";
+import { CarCard, ShowMore, CustomFilter, SearchBar, Hero } from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
-import { ShowMore } from "@/components";
-import { useEffect, useState } from "react";
-import { CarState } from "@/types";
+import { HomeProps } from "@/types";
 
-export default function Home() {
-  const [allCars, setAllCars] = useState<CarState>([]);
+export default async function Home({ searchParams }: HomeProps) {
+  const allCars = await fetchCars({
+    manufacturer: searchParams.manufacturer || "",
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 10,
+    model: searchParams.model || "",
+  });
 
-  const [loading, setLoading] = useState(false);
-
-  const [manufacturer, setManufacturer] = useState("");
-
-  const [model, setModel] = useState("");
-
-  const [fuel, setFuel] = useState("");
-
-  const [year, setYear] = useState(2022);
-
-  const [limit, setLimit] = useState(10);
-
-  const getCars = async () => {
-    try {
-      const result = await fetchCars({
-        manufacturer: manufacturer || "",
-        year: year || 2022,
-        fuel: fuel || "",
-        limit: limit || 10,
-        model: model || "",
-      });
-
-      setAllCars(result);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getCars();
-  }, [fuel, year, model, manufacturer, limit]);
+  const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
     <main className="overflow-hidden">
@@ -57,10 +24,10 @@ export default function Home() {
           <p>Explore the cars you might like</p>
         </div>
         <div className="home__filters">
-          <SearchBar setManufacturer={setManufacturer} setModel={setModel} />
+          <SearchBar />
           <div className="home__filter-container">
-            <CustomFilter setFilter={setFuel} options={fuels} />
-            <CustomFilter setFilter={setYear} options={yearsOfProduction} />
+            <CustomFilter title="fuel" options={fuels} />
+            <CustomFilter title="year" options={yearsOfProduction} />
           </div>
         </div>
         {allCars.length > 0 ? (

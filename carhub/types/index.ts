@@ -10,8 +10,6 @@ export interface CustomButtonProps {
   rightIcon?: string;
 }
 
-export type CarState = CarProps[] & { message?: string };
-
 export interface SearchManufacturerProps {
   selected: string;
   setSelected: (selected: string) => void;
@@ -55,14 +53,18 @@ export interface FiltersProps {
   model: string;
 }
 
+export interface HomeProps {
+  searchParams: FiltersProps;
+}
+
 export interface OptionProps {
   title: string;
   value: string;
 }
 
-export interface CustomFilterProps<T> {
+export interface CustomFilterProps {
+  title: string;
   options: OptionProps[];
-  setFilter: (selected: T) => void;
 }
 
 export interface ShowMoreProps {
