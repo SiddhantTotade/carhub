@@ -3,7 +3,7 @@
 </div>
 
 # About the project
-CarHub is a frontend project developed of Next, React and TypeScript. This project uses the rapid api for getting the information of the cars and display it on the page.
+CarHub is a frontend project developed using Next, React and TypeScript. This project uses the rapid api for getting the information of the cars and display it on the page.
 
 ### Features of the project
 + Search cars
