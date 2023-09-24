@@ -35,7 +35,7 @@ http://localhost:3000/
 + Create an account
 + After creating, copy the `X-RapidAPI-Key`
 + Create a `.env` file in `src` directory and paste the following code in `.env` file.
-`NEXT_PUBLIC_X_Rapid_API_KEY = API_KEY`
+`NEXT_PUBLIC_X_Rapid_API_KEY = API_KEY` and
 `NEXT_PUBLIC_X_Rapid_API_HOST = API_URL`
 
 ## Project Images
