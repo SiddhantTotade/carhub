@@ -26,8 +26,6 @@ export default function Home() {
 
   const [limit, setLimit] = useState(10);
 
-  const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
-
   const getCars = async () => {
     try {
       const result = await fetchCars({
@@ -75,7 +73,7 @@ export default function Home() {
             {loading && (
               <div className="flex-center w-full mt-16">
                 <Image
-                  src="/loader.svg"
+                  src="./loader.svg"
                   alt="loader"
                   width={50}
                   height={50}
