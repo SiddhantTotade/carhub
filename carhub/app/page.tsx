@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { fetchCars } from "@/utils";
 import { CarCard, ShowMore, CustomFilter, SearchBar, Hero } from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
@@ -30,39 +29,23 @@ export default async function Home({ searchParams }: HomeProps) {
             <CustomFilter title="year" options={yearsOfProduction} />
           </div>
         </div>
-        {allCars.length > 0 ? (
+        {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
               {allCars?.map((car, id) => (
                 <CarCard key={id} car={car} />
               ))}
             </div>
-            {loading && (
-              <div className="flex-center w-full mt-16">
-                <Image
-                  src="./loader.svg"
-                  alt="loader"
-                  width={50}
-                  height={50}
-                  className="object-contain"
-                />
-              </div>
-            )}
             <ShowMore
-              pageNumber={limit / 10}
-              isNext={limit > allCars.length}
-              setLimit={setLimit}
+              pageNumber={(searchParams.limit || 10) / 10}
+              isNext={(searchParams.limit || 10) > allCars.length}
             />
           </section>
         ) : (
-          !loading && (
-            <div className="home__error-container">
-              <h2 className="text-black text-xl font-bold">
-                Oops... no results
-              </h2>
-              <p>{allCars?.message}</p>
-            </div>
-          )
+          <div className="home__error-container">
+            <h2 className="text-black text-xl font-bold">Oops... no results</h2>
+            <p>{allCars?.message}</p>
+          </div>
         )}
       </div>
     </main>
