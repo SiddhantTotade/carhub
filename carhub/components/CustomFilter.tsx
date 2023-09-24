@@ -9,19 +9,26 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CustomFilterProps } from "@/types";
 import { updateSearchParams } from "@/utils";
 
-export default function CustomFilter<T>({
-  options,
-  setFilter,
-}: CustomFilterProps<T>) {
+export default function CustomFilter({ title, options }: CustomFilterProps) {
+  const router = useRouter();
+
   const [menu, setMenu] = useState(options[0]);
+
+  const [selected, setSeleted] = useState(options[0]);
+
+  const handleUpdateParams = (e: { title: string; value: string }) => {
+    const newPathname = updateSearchParams(title, e.value.toLowerCase());
+
+    router.push(newPathname);
+  };
 
   return (
     <div className="w-fit">
       <Listbox
         value={menu}
         onChange={(e) => {
-          setMenu(e);
-          setFilter(e.value as unknown as T);
+          setSeleted(e);
+          handleUpdateParams(e);
         }}
       >
         <div className="relative w-fit z-10">
