@@ -39,5 +39,5 @@ http://localhost:3000/
 
 ## Project Images
 <div align="center" gap="10px" display="flex">
-<img src="https://github.com/SiddhantTotade/listen/blob/main/app_images/listen_1.png" width="400px" />
+<img src="https://github.com/SiddhantTotade/carhub/blob/client-side/app_images/carhub%20-%201.png" width="400px" />
 <div/>
