@@ -35,7 +35,8 @@ http://localhost:3000/
 + Create an account
 + After creating, copy the `X-RapidAPI-Key`
 + Create a `.env` file in `src` directory and paste the following code in `.env` file.
-`VITE_SHAZAM_CORE_RAPID_API_KEY=API_KEY`
+`NEXT_PUBLIC_X_Rapid_API_KEY = API_KEY
+NEXT_PUBLIC_X_Rapid_API_HOST = API_URL`
 
 ## Project Images
 <div align="center" gap="10px" display="flex">
