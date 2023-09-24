@@ -38,11 +38,10 @@ http://localhost:3000/
 `NEXT_PUBLIC_X_Rapid_API_KEY = API_KEY` and
 `NEXT_PUBLIC_X_Rapid_API_HOST = API_URL`
 
-## Project Images
-<div align="center" gap="10px" display="flex">
-<img src="https://github.com/SiddhantTotade/carhub/blob/client-side/app_images/carhub%20-%201.png" width="400px" />
-<div/>
-
 ## Note
 + You are currently at branch `client-side`. To view the `server-side` change the branch.
 
+## Project Images
+<div align="center" gap="10px" display="flex">
+  <img src="https://github.com/SiddhantTotade/carhub/blob/client-side/app_images/carhub%20-%201.png" width="400px" />
+<div/>
